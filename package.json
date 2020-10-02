@@ -1,0 +1,38 @@
+{
+  "name": "nahual-atenticacion",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "test": "jest",
+    "create-schema": "npx sequelize-cli db:migrate",
+    "seeder": "npx sequelize-cli db:seed:all",
+    "heroku-postbuild": "npm run -s create-schema && npm run -s seeder"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TallerDeDesarrollo-UCB/Nahual-Atenticacion.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TallerDeDesarrollo-UCB/Nahual-Atenticacion/issues"
+  },
+  "homepage": "https://github.com/TallerDeDesarrollo-UCB/Nahual-Atenticacion#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "pg": "^8.3.3",
+    "sequelize": "^6.3.5",
+    "swagger-ui-express": "^4.1.4"
+  },
+  "devDependencies": {
+    "jest": "^26.4.2",
+    "nodemon": "^2.0.4",
+    "sequelize-cli": "^6.2.0",
+    "supertest": "^4.0.2"
+  }
+}
