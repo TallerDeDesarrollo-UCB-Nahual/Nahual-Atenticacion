@@ -20,7 +20,49 @@ module.exports = {
         email: 'staranto@mail.com',
         password:'hunter2',
         rolId: 1,
-      }      
+      },
+      {
+        nombreCompleto: 'ctrlaltdel',
+        email: 'ctrlalt@outlook.com',
+        password:'delete',
+        rolId: 1,
+      },
+      {
+        nombreCompleto: 'HalSoft',
+        email: 'rrhh@halsoft.com',
+        password:'tecnologia',
+        rolId: 1,
+      },
+      {
+        nombreCompleto: 'Diego Diaz',
+        email: 'diegodiaz1@mail.com',
+        password:'invalida',
+        rolId: 1,
+      },
+      {
+        nombreCompleto: 'Guillermo Posebon',
+        email: 'guiposeb@mail.com',
+        password:'holamundo',
+        rolId: 1,
+      },
+      {
+        nombreCompleto: 'Daniel Laco',
+        email: 'danlaco@mail.com',
+        password:'nombredemiperro',
+        rolId: 1,
+      },
+      {
+        nombreCompleto: 'Patricia Scalzone',
+        email: 'patizone@mail.com',
+        password:'pelifavorita',
+        rolId: 1,
+      },
+      {
+        nombreCompleto: 'Abraham Segovia',
+        email: 'segoviaa@mail.com',
+        password:'segovia90',
+        rolId: 1,
+      }
     ]);
   },
 
