@@ -6,5 +6,6 @@ module.exports = (sequelize, DataTypes) => {
 		},
 		'nombre': DataTypes.STRING
 	});
+	Rol.hasMany(Credencial);
 	return Rol;
 }
