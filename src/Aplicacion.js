@@ -3,8 +3,6 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const RUTA_BASE = "/api";
-const swaggerUi = require("swagger-ui-express");
-const routeNames = require("./resources/routeNames");
 const ruteadorDeAutenticacion = require("./routes/ruteadorDeAutenticacion");
 
 class Application {
@@ -13,7 +11,6 @@ class Application {
     this.configurarCors();
     this.configurarExpress();
     this.configurarRutas();
-    this.configurarRutaNoEncontrada();
     this.configurarPuerto();
   }
 
@@ -28,14 +25,6 @@ class Application {
 
   configurarPuerto() {
     this.express.set("puerto", process.env.PORT || 8000);
-  }
-
-  configurarRutaNoEncontrada() {
-    this.express.use((request, response, next) => {
-      const error = new Error("Ruta no encontrada");
-      error.status = 404;
-      next(error);
-    });
   }
 
   configurarCors() {

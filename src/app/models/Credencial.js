@@ -1,5 +1,3 @@
-const { Rol } = require("./");
-
 module.exports = (sequelize, DataTypes) => {
   const Credencial = sequelize.define("Credenciales", {
     id: {

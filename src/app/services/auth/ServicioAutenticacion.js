@@ -1,10 +1,9 @@
 const { Credenciales } = require("../../models");
 const jwt = require("jsonwebtoken");
 const tiempoDeExpiraciondeTokenEnSegundos = 86400;
-const bcrypt = require("bcrypt");
+
 const ServicioAutenticacion = {
   iniciarSesion: async (req, res) => {
-    console.log(require("../../models"));
     const { email, password } = req.body;
     await Credenciales.findOne({
       where: {
@@ -14,7 +13,7 @@ const ServicioAutenticacion = {
       if (!usercredential) {
         return res.status(400).send("No existe el usuario");
       }
-    
+
       if (!password === usercredential.password) {
         return res.status(401).send({
           auth: false,
@@ -26,7 +25,7 @@ const ServicioAutenticacion = {
         {
           id: usercredential.id,
           nombre: usercredential.nombreCompleto,
-          email: usercredential.email
+          email: usercredential.email,
         },
         "estaesunaoracionlarga",
         {
