@@ -1,5 +1,5 @@
-const { Credenciales } = require("../../models");
-const jwt = require("jsonwebtoken");
+const { Credenciales } = require('../../models');
+const jwt = require('jsonwebtoken');
 const tiempoDeExpiraciondeTokenEnSegundos = 86400;
 
 const ServicioAutenticacion = {
@@ -11,23 +11,16 @@ const ServicioAutenticacion = {
       },
     }).then((usercredential) => {
       if (!usercredential) {
-        return res.status(400).send("No existe el usuario");
+        return res.status(400).send('No existe el usuario');
       }
-
-      if (!password === usercredential.password) {
-        return res.status(401).send({
-          auth: false,
-          accessToken: null,
-          reason: "Usuario o contrasena invalido",
-        });
-      }
+      
       const token = jwt.sign(
         {
           id: usercredential.id,
           nombre: usercredential.nombreCompleto,
           email: usercredential.email,
         },
-        "estaesunaoracionlarga",
+        'estaesunaoracionlarga',
         {
           expiresIn: tiempoDeExpiraciondeTokenEnSegundos,
         }
