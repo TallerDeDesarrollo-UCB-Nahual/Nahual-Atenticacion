@@ -1,5 +1,3 @@
-const Rol = require("./Rol");
-
 module.exports = (sequelize, DataTypes) => {
 	const Credencial = sequelize.define('Credencial', {
 		'id': {
@@ -37,7 +35,7 @@ module.exports = (sequelize, DataTypes) => {
     });
 	//Credencial.hasOne(Rol, {foreignkey:'rolId'});
 	Credencial.associate = (models) => {
-		Credencial.hasOne(models.Rol, {foreignKey: 'id', as: 'rolId'});
+		Credencial.belongsTo(models.Rol,);
 	  };
 	return Credencial;
 } 
