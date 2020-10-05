@@ -6,10 +6,38 @@ module.exports = (sequelize, DataTypes) => {
 			type: DataTypes.INTEGER,
 			primaryKey: true
 		},
-        'nombreCompleto': DataTypes.STRING,
-        'email' : DataTypes.STRING,
-        'password': DataTypes.STRING,        
+		'nombreCompleto':{ type:
+			DataTypes.STRING(60),
+			allowNull: false,
+			validate: {
+				len: {
+					args: [0, 60],
+					msg: "El nombre tiene que tener entre 1 a 60 caracteres"
+				}
+			}
+		},
+		'email' :{ 
+			type: DataTypes.STRING(100),
+			allowNull: false,
+			validate:{
+				isEmail:{
+					msg: 'No es un email valido'
+				}
+			}
+		},
+        'password': {
+			type: DataTypes.STRING,
+			allowNull:false,
+			validate:{
+				len:{
+					args:[6,20]
+				}
+			}
+		},        
     });
-    Credencial.hasOne(Rol, {foreignkey:'rolId'});
+	//Credencial.hasOne(Rol, {foreignkey:'rolId'});
+	Credencial.associate = (models) => {
+		Credencial.hasOne(models.Rol, {foreignKey: 'id', as: 'rolId'});
+	  };
 	return Credencial;
 } 
