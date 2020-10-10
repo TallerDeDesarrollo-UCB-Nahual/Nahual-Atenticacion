@@ -4,6 +4,8 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const RUTA_BASE = '/api';
 const swaggerUi = require('swagger-ui-express');
+const empresas = require('./routes/empresas');
+const voluntaries = require('./routes/voluntaries');
 
 class Application {
 	constructor() {
@@ -16,6 +18,8 @@ class Application {
 	}
 
 	configurarRutas() {
+		this.express.use(RUTA_BASE, empresas);
+		this.express.use(RUTA_BASE, voluntaries);
 	}
 
 	configurarExpress() {

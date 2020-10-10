@@ -1,19 +1,13 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Empresa extends Model {
-    static associate(models) {
-    }
-  };
-  Empresa.init({
-    nombre: DataTypes.STRING,
-    email: DataTypes.STRING,
-    imagen: DataTypes.STRING
-  }, {
-    sequelize,
-    modelName: 'Empresa',
+  const Empresa = sequelize.define('Empresa', {
+    'id': {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
+    },
+    'nombre': DataTypes.STRING,
+    'email': DataTypes.STRING,
+    'imagen': DataTypes.STRING
   });
   return Empresa;
-};
+}
