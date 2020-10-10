@@ -4,14 +4,9 @@ module.exports = {
   up: async (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('Empresas', [
       {
-        nombre: 'Empresa1',
-        email: 'empresa1@gmail.com',
-        imagen: 'imagen_empresa1'
-      },
-      {
-        nombre: 'Empresa2',
-        email: 'empresa2@gmail.com',
-        imagen: 'imagen_empresa2'
+        nombre: 'Eduardo Salvatierra',
+        email: 'edublowcorps1@gmail.com',
+        imagen: 'https://lh3.googleusercontent.com/a-/AOh14GgUd4vtvj5llaCEJCPM7BN-ucGUzJbY8dPo0lSy'
       }
     ]);
   },
