@@ -1,0 +1,22 @@
+{
+  "name": "nahual-atenticacion",
+  "version": "1.0.0",
+  "description": "Proyecto de autenticacion",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TallerDeDesarrollo-UCB/Nahual-Atenticacion.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TallerDeDesarrollo-UCB/Nahual-Atenticacion/issues"
+  },
+  "homepage": "https://github.com/TallerDeDesarrollo-UCB/Nahual-Atenticacion#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
