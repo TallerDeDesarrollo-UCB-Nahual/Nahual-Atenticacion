@@ -1,11 +1,11 @@
 var express = require('express');
-var app = express();
-const port = 3000
+var aplicacion = express();
+const puerto = 3000
 
-app.get('/', function(req, res) {
-  res.send('Nahual endpoint');
+aplicacion.get('/', function(peticion, respuesta) {
+  res.send('Bienvenido a nahual');
 });
 
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
+aplicacion.listen(puerto, () => {
+  console.log(`Tu aplicacion esta corriendo en http://localhost:${port}`)
 });
