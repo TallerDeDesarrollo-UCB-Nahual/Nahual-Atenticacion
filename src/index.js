@@ -26,5 +26,9 @@ aplicacion.get('/', function(peticion, respuesta) {
 
 aplicacion.listen(puerto, () => {
   console.log(`Tu aplicacion esta corriendo en http://localhost:${puerto}`)
+<<<<<<< HEAD
 });
 >>>>>>> Creacion de carpetas src, controladores y rutas. Instalacion de modulos pg para manejo de base de datos postgres y nodemon, edicion en el package.json scripts:src/index.js
+=======
+});
+>>>>>>> Otorgar acceso ruta
