@@ -8,3 +8,6 @@ CREATE TABLE usuarios (
     tieneAccesoEgresades boolean,
     tieneAccesoVoluntaries boolean
 );
+
+INSERT INTO usuarios (nombre, email, tieneAccesoEmpresas, tieneAccesoEgresades, tieneAccesoVoluntaries)
+    VALUES ('jorge', 'joe@ibm.com', 'TRUE', 'FALSE', 'FALSE');

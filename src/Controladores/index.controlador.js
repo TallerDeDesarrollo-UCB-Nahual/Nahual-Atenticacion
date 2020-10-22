@@ -4,13 +4,14 @@ const pool = new Pool({
   user: 'postgres',
   host: 'localhost',
   password: 'ucbpostgres',
-  database: 'usuariosConAcceso',
+  database: 'usuariosconacceso',
   port: '5432'
 });
 
-const obtenerUsuarios = (rew, res)=>{
-  res.send('usuarios');
-}
+const obtenerUsuarios = async (peticion, respuesta) => {
+  const resp = await pool.query('SELECT * FROM usuarios ORDER BY id ASC');
+  respuesta.status(200).json(resp.rows);
+};
 
 module.exports = {
   obtenerUsuarios

@@ -1,12 +1,24 @@
 const express = require('express');
 const aplicacion = express();
-const { obtenerUsuarios } = require('../src/Controladores/index.controlador')
 const puerto = 3000;
+
+//Conexion de sequelize con la base datos postgres
+// const Sequelize = require('sequelize');
+// const sequelize = new Sequelize('usariosconacceso', 'postgres', 'ucbpostgres', {
+//     host: 'localhost',
+//     dialect: 'postgres'
+//   });
+// sequelize.authenticate()
+// .then(() => {
+//   console.log('Conectado')
+// })
+// .catch(err => {
+//   console.log('No se conecto')
+// });
 
 //middleware
 aplicacion.use(express.json());
 aplicacion.use(express.urlencoded());
-
 
 //Rutas
 aplicacion.use(require('./Rutas/index'));
