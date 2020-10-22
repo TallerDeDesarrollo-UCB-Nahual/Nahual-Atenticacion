@@ -1,10 +1,15 @@
-var express = require('express');
-var aplicacion = express();
+const express = require('express');
+const aplicacion = express();
+const { obtenerUsuarios } = require('../src/Controladores/index.controlador')
 const puerto = 3000;
 
 //middleware
 aplicacion.use(express.json());
 aplicacion.use(express.urlencoded());
+
+
+//Rutas
+aplicacion.use(require('./Rutas/index'));
 
 aplicacion.get('/', function(peticion, respuesta) {
   respuesta.send('Bienvenido a nahual');
