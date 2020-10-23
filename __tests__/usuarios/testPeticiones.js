@@ -1,13 +1,13 @@
 const request = require("supertest");
-const application = require("../../Aplicacion");
+const aplicacion = require("../../Aplicacion");
 
 describe("Test de obtener todas las peticiones", () => {
-  test("Deberia retornar todas las peticiones", done => {
-    request(application)
+  test("Deberia retornar todas las peticiones", terminada => {
+    request(aplicacion)
       .get("/peticiones")
-      .then(response => {
-        expect(response.statusCode).toBe(200);
-        done();
+      .then(respuesta => {
+        expect(respuesta.statusCode).toBe(200);
+        terminada();
       });
   });
 });
