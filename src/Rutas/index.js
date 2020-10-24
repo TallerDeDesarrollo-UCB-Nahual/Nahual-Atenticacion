@@ -1,10 +1,9 @@
 const { Router } = require('express');
 const router = Router();
+const SolicitudController = require('../controladores/solicitudController')
 
-const {obtenerUsuarios, autorizarUsuario} = require('../Controladores/index.controlador')
-
-router.get('/usuarios',obtenerUsuarios);
-
-router.post('/usuarios/autorizar', autorizarUsuario);
+router.get('/solicitudes', SolicitudController.obtenerTodo);
+router.post('/solicitudes', SolicitudController.crearSolicitud);
+router.delete('/solicitudes/:id', SolicitudController.borrarSolicitud);
 
 module.exports = router;

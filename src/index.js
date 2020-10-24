@@ -1,17 +1,19 @@
 const express = require('express');
 const aplicacion = express();
-const { obtenerUsuarios } = require('../src/Controladores/index.controlador')
 const puerto = 3000;
+const bodyParser = require('body-parser');
 
 //middleware
+aplicacion.use(bodyParser.json());
+aplicacion.use(bodyParser.urlencoded({ extended: false }));
 aplicacion.use(express.json());
 aplicacion.use(express.urlencoded());
 
 
 //Rutas
-aplicacion.use(require('./Rutas/index'));
+aplicacion.use(require('./rutas/index'));
 
-aplicacion.get('/', function(peticion, respuesta) {
+aplicacion.get('*', function(peticion, respuesta) {
   respuesta.send('Bienvenido a nahual');
 });
 
