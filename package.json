@@ -1,10 +1,10 @@
 {
-  "name": "nahual-atenticacion",
+  "name": "nahual-autenticacion",
   "version": "1.0.0",
   "description": "Proyecto de autenticacion",
   "main": "index.js",
   "scripts": {
-    "start": "node ./api/index.js",
+    "start": "node src/index.js",
     "dev": "nodemon src/index.js",
     "create-schema": "npx sequelize-cli db:migrate",
     "heroku-postbuild": "npm run -s create-schema"
