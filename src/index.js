@@ -12,6 +12,7 @@ aplicacion.use(express.urlencoded());
 
 //Rutas
 aplicacion.use('/api',rutas);
+aplicacion.set('port', process.env.PORT || puerto)
 
 aplicacion.get('*', function(peticion, respuesta) {
   respuesta.send('Bienvenido a nahual');
