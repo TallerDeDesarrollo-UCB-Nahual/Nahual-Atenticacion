@@ -8,13 +8,16 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name: {
+      nombre: {
         type: Sequelize.STRING
       },
       email: {
         type: Sequelize.STRING
       },
-      reason: {
+      razon: {
+        type: Sequelize.STRING
+      },
+      aplicacion: {
         type: Sequelize.STRING
       }
     });
