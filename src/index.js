@@ -11,7 +11,7 @@ aplicacion.use(express.urlencoded());
 
 
 //Rutas
-aplicacion.use('/api/',rutas);
+aplicacion.use('/api',rutas);
 
 aplicacion.get('*', function(peticion, respuesta) {
   respuesta.send('Bienvenido a nahual');
