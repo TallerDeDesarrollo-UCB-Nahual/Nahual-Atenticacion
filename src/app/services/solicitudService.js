@@ -33,33 +33,6 @@ const SolicitudService = {
         throw error;
       }
     },
-
-    crearUsuario: async(usuario) => {
-      try {
-        const respuesta = await UsuarioModel.create(usuario);
-        return respuesta;
-      }
-      catch (error) {
-        throw error;
-      }
-    },
-
-    otorgarAcceso: async(email, aplicacion) => {
-      try {
-        let permiso = '';
-        if(aplicacion === 'Nahual')
-          permiso = 'permisoNahual';
-        else
-          permiso = 'permisoEmpresas';
-        const respuesta = await UsuarioModel.update({
-          [permiso]: true,
-        });
-        return respuesta;
-      }
-      catch (error) {
-        throw error;
-      }
-    }
 }
 
 module.exports = SolicitudService;
