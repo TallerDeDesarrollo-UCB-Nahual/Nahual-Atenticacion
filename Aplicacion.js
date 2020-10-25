@@ -1,9 +1,11 @@
 const express = require('express');
 const peticiones = require('./rutas/peticiones');
+const cors = require('cors');
 
 class Aplicacion {
   constructor() {
     this.express = express();
+    this.configurarCors();
     this.configurarRutas();
     this.configurarPuerto();
   }
@@ -14,6 +16,9 @@ class Aplicacion {
 
   configurarPuerto() {
     this.express.set('puerto', process.env.PORT || 3000);
+  }
+  configurarCors(){
+    this.express.use(cors());
   }
 }
 
