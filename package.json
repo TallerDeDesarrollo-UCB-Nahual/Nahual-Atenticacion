@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node ./api/index.js",
-    "dev": "nodemon src/index.js"
+    "dev": "nodemon src/index.js",
+    "create-schema": "npx sequelize-cli db:migrate",
+    "heroku-postbuild": "npm run -s create-schema"
   },
   "repository": {
     "type": "git",
