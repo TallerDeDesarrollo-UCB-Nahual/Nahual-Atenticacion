@@ -1,23 +1,24 @@
 const sequelize = require('../../config/sequelize-config').sequelize
 const DataTypes = require('../../config/sequelize-config').datatype
 
-  const Solicitud = sequelize.define('Solicitud', {
+  const Usuario = sequelize.define('Usuario', {
     nombre: {
       type: DataTypes.STRING,
       allowNull: false
     },
     email: {
       type: DataTypes.STRING,
+      primaryKey: true,
       allowNull: false
     },
-    razon:{
-      type: DataTypes.STRING,
-      allowNull: false
+    permisoEmpresas:{
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
     },
-    aplicacion:{
-      type: DataTypes.STRING,
-      allowNull: false
+    permisoNahual:{
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
     }
   });
 
-module.exports = Solicitud;
+module.exports = Usuario;
