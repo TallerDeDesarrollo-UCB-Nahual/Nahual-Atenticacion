@@ -1,32 +1,33 @@
 const SolicitudModel = require('../models/solicitud');
 const UsuarioModel = require('../models/usuario');
 const UsuarioService = {
-    otorgarAcceso: async(nombre, email, aplicacion) => {
-        const encontrarUsuarioPor = async(email) => {
-            try {
-                const respuesta = await UsuarioModel.findOne({
-                    where: {
-                        email: email,
-                    },
-                });
-                return respuesta;
-            }
-            catch (error) {
-                throw error;
-            }
-        };
+    encontrarUsuarioPor: async(email) => {
+        try {
+            const respuesta = await UsuarioModel.findOne({
+                where: {
+                    email: email,
+                },
+            });
+            return respuesta;
+        }
+        catch (error) {
+            throw error;
+        }
+    },
 
+    otorgarAcceso: async(nombre, email, aplicacion) => {
         let permiso = '';
         if(aplicacion === 'Nahual')
             permiso = 'permisoNahual';
-        else
+        if(aplicacion === 'Empresas')
             permiso = 'permisoEmpresas';
-        const usuarioEcontrado = await encontrarUsuarioPor(email);
+        if(aplicacion === undefined)
+            throw new Error('No se especifico una aplicacion de origen');
+        const usuarioEcontrado = await UsuarioService.encontrarUsuarioPor(email);
         if(usuarioEcontrado){
             try {
-                const respuesta = await UsuarioModel.update({
-                  [permiso]: true,
-                });
+                usuarioEcontrado[permiso] = true;
+                const respuesta = await usuarioEcontrado.save();
                 return respuesta;
               }
               catch (error) {
