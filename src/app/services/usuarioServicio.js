@@ -22,7 +22,7 @@ const UsuarioService = {
         if(aplicacion === 'Empresas')
             permiso = 'permisoEmpresas';
         if(aplicacion === undefined)
-            throw new Error('No se especifico una aplicacion de origen');
+            throw new Error('No se especificó una aplicacion de origen.');
         const usuarioEcontrado = await UsuarioService.encontrarUsuarioPor(email);
         if(usuarioEcontrado){
             try {
@@ -49,6 +49,34 @@ const UsuarioService = {
         }
     },
 
+    verificarAcceso: async(nombre, email, aplicacion)=>{
+        let acceso = '';
+        if(aplicacion === 'Nahual')
+            acceso = 'permisoNahual';
+        if(aplicacion === 'Empresas')
+            acceso = 'permisoEmpresas';
+        if(aplicacion === undefined)
+            throw new Error('Aplicación de origen no existente.');
+        const usuarioEcontrado = await UsuarioService.encontrarUsuarioPor(email);
+        if (usuarioEcontrado[acceso] === true) {
+            try {
+              console.log("Tienes acceso");
+              return true;
+            } 
+            catch (error) {
+              throw error;
+            }
+          } 
+          else {
+            try {
+              console.log("No tiene Acceso");
+              return false;
+            } 
+            catch (error) {
+              throw error;
+            }
+          }
+        }
 }
 
 module.exports = UsuarioService;
