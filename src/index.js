@@ -18,7 +18,7 @@ aplicacion.get("*", function(peticion, respuesta) {
   respuesta.send("Bienvenido a nahual");
 });
 
-aplicacion.use('port', PORT)
+aplicacion.set('port', PORT);
 aplicacion.listen(PORT, () => {
   console.log(`La API esta corriendo en ${PORT}`);
 });
