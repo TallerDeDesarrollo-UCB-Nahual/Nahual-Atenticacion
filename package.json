@@ -7,7 +7,7 @@
     "start": "node src/index.js",
     "dev": "nodemon src/index.js",
     "test": "jest",
-    "create-schema": "npx sequelize db:migrate",
+    "create-schema": "npx sequelize-cli db:migrate",
     "heroku-postbuild": "npm run -s create-schema"
   },
   "repository": {
