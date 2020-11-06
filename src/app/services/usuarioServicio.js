@@ -77,6 +77,31 @@ const UsuarioService = {
         throw error;
       }
     }
+  },
+
+  revocarAcceso: async ( email, aplicacion) => {
+    let permiso = "";
+    switch (aplicacion) {
+      case "Nahual":
+        permiso = "permisoNahual"
+        break;
+      case "Empresas":
+        permiso = "permisoEmpresas"
+        break;
+      default:
+        throw new Error("No se encontro la aplicacion: " + aplicacion)
+    }
+    const usuarioEcontrado = await UsuarioService.encontrarUsuarioPor(email);
+    if (usuarioEcontrado) {
+      try {
+        usuarioEcontrado[permiso] = false;
+        const respuesta = await usuarioEcontrado.save();
+        return respuesta;
+      } catch (error) {
+        throw error;
+      }
+    } 
+    throw new Error("No se encontró el usuario con email: " + email);
   }
 };
 
