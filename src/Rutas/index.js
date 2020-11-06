@@ -7,6 +7,7 @@ router.get("/solicitudes", SolicitudController.obtenerTodo);
 router.post("/solicitudes", SolicitudController.crearSolicitud);
 router.delete("/solicitudes/:id", SolicitudController.borrarSolicitud);
 router.post("/otorgarAcceso", UsuarioController.otorgarAccesoAplicacion);
+router.post("/otorgarAccesoDirecto", UsuarioController.otorgarAccesoAplicacion);
 router.post("/verificarAcceso", UsuarioController.verificarAcceso);
 
 module.exports = router;
