@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "ngjihkpx",
-    "password": "m9vXtwZkaD461s5QgE_61vaCQx2ksLHS",
-    "database": "ngjihkpx",
-    "host": "salt.db.elephantsql.com",
+    "username": "vtyxyxhe",
+    "password": "H6BA0U1gsz6m842s0JGVrQUuE_IHA-K8",
+    "database": "vtyxyxhe",
+    "host": "lallah.db.elephantsql.com",
     "dialect": "postgres",
     "define": {
       "schema": "public",

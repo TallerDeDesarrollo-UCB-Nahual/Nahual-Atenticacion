@@ -19,6 +19,10 @@ module.exports = {
               type: Sequelize.BOOLEAN,
               defaultValue: false
         },
+        permisoAdmin:{
+          type: Sequelize.BOOLEAN,
+          defaultValue: false
+        }
     });
   },
   down: async (queryInterface, Sequelize) => {
