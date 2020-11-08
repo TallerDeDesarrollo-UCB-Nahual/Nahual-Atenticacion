@@ -1,5 +1,19 @@
 const SolicitudModel = require("../models/solicitud");
 const UsuarioModel = require("../models/usuario");
+const verificarAplicacion = (aplicacion)=>{
+  switch(aplicacion)
+      {
+        case "Nahual": 
+          return "permisoNahual";
+        case "Empresas":
+          return "permisoEmpresas";
+          break;
+        case "Admin":
+          return "permisoAdmin";
+        default:
+          throw new Error("Aplicación no correspondiente.");
+      }
+}
 const UsuarioService = {
   encontrarUsuarioPor: async email => {
     try {
@@ -16,24 +30,17 @@ const UsuarioService = {
 
   verificarAcceso: async (nombre, email, aplicacion) => {
     try {
-      let acceso = "";
-      if (aplicacion === "Nahual") acceso = "permisoNahual";
-      if (aplicacion === "Empresas") acceso = "permisoEmpresas";
-      if (aplicacion === "Admin") acceso = "permisoAdmin";
-      if (aplicacion === undefined)
-        throw new Error("aplicacion no correspondiente");
+      let acceso = verificarAplicacion(aplicacion);
       const usuarioEncontrado = await UsuarioService.encontrarUsuarioPor(email);
       if (usuarioEncontrado) {
         if (usuarioEncontrado[acceso] === true) {
           try {
-            console.log("Tienes acceso");
             return true;
           } catch (error) {
             throw error;
           }
         } else {
           try {
-            console.log("No tiene Acceso");
             return false;
           } catch (error) {
             throw error;
@@ -52,14 +59,9 @@ const UsuarioService = {
   },
 
   otorgarAcceso: async (nombre, email, aplicacion) => {
-    let permiso = "";
-    if (aplicacion === "Nahual") permiso = "permisoNahual";
-    if (aplicacion === "Empresas") permiso = "permisoEmpresas";
-    if (aplicacion === "Admin") permiso = "permisoAdmin";
-    if (aplicacion === undefined)
-      throw new Error("No se especifico una aplicacion de origen");
-    const usuarioEncontrado = await UsuarioService.encontrarUsuarioPor(email);
-    if (usuarioEncontrado) {
+    let permiso = verificarAplicacion(aplicacion);
+    const usuarioEcontrado = await UsuarioService.encontrarUsuarioPor(email);
+    if (usuarioEcontrado) {
       try {
         usuarioEncontrado[permiso] = true;
         const respuesta = await usuarioEncontrado.save();
