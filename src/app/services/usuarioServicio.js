@@ -19,6 +19,7 @@ const UsuarioService = {
       let acceso = "";
       if (aplicacion === "Nahual") acceso = "permisoNahual";
       if (aplicacion === "Empresas") acceso = "permisoEmpresas";
+      if (aplicacion === "Admin") acceso = "permisoAdmin";
       if (aplicacion === undefined)
         throw new Error("aplicacion no correspondiente");
       const usuarioEncontrado = await UsuarioService.encontrarUsuarioPor(email);
