@@ -1,12 +1,13 @@
 const { Router } = require("express");
 const router = Router();
-const SolicitudController = require("../controladores/solicitudController");
-const UsuarioController = require("../controladores/usuarioController");
+const SolicitudControlador = require("../controladores/solicitudController");
+const UsuarioControlador = require("../controladores/usuarioControlador");
 
-router.get("/solicitudes", SolicitudController.obtenerTodo);
-router.post("/solicitudes", SolicitudController.crearSolicitud);
-router.delete("/solicitudes/:id", SolicitudController.borrarSolicitud);
-router.post("/otorgarAcceso", UsuarioController.otorgarAccesoAplicacion);
-router.post("/verificarAcceso", UsuarioController.verificarAcceso);
+router.get("/solicitudes", SolicitudControlador.obtenerTodo);
+router.post("/solicitudes", SolicitudControlador.crearSolicitud);
+router.delete("/solicitudes/:id", SolicitudControlador.borrarSolicitud);
+router.post("/otorgarAcceso", UsuarioControlador.otorgarAccesoAplicacion);
+router.post("/revocarAcceso", UsuarioControlador.revocarAccesoAplicacion);
+router.post("/verificarAcceso", UsuarioControlador.verificarAcceso);
 
 module.exports = router;

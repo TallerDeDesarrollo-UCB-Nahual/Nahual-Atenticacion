@@ -56,11 +56,11 @@ const UsuarioService = {
     if (aplicacion === "Empresas") permiso = "permisoEmpresas";
     if (aplicacion === undefined)
       throw new Error("No se especifico una aplicacion de origen");
-    const usuarioEcontrado = await UsuarioService.encontrarUsuarioPor(email);
-    if (usuarioEcontrado) {
+    const usuarioEncontrado = await UsuarioService.encontrarUsuarioPor(email);
+    if (usuarioEncontrado) {
       try {
-        usuarioEcontrado[permiso] = true;
-        const respuesta = await usuarioEcontrado.save();
+        usuarioEncontrado[permiso] = true;
+        const respuesta = await usuarioEncontrado.save();
         return respuesta;
       } catch (error) {
         throw error;
@@ -77,6 +77,31 @@ const UsuarioService = {
         throw error;
       }
     }
+  },
+
+  revocarAcceso: async ( email, aplicacion) => {
+    let permiso = "";
+    switch (aplicacion) {
+      case "Nahual":
+        permiso = "permisoNahual"
+        break;
+      case "Empresas":
+        permiso = "permisoEmpresas"
+        break;
+      default:
+        throw new Error("No se encontro la aplicacion: " + aplicacion)
+    }
+    const usuarioEncontrado = await UsuarioService.encontrarUsuarioPor(email);
+    if (usuarioEncontrado) {
+      try {
+        usuarioEncontrado[permiso] = false;
+        const respuesta = await usuarioEncontrado.save();
+        return respuesta;
+      } catch (error) {
+        throw error;
+      }
+    } 
+    throw new Error("No se encontró el usuario con email: " + email);
   }
 };
 
