@@ -19,6 +19,7 @@ const UsuarioService = {
       let acceso = "";
       if (aplicacion === "Nahual") acceso = "permisoNahual";
       if (aplicacion === "Empresas") acceso = "permisoEmpresas";
+      if (aplicacion === "Admin") acceso = "permisoAdmin";
       if (aplicacion === undefined)
         throw new Error("aplicacion no correspondiente");
       const usuarioEncontrado = await UsuarioService.encontrarUsuarioPor(email);
@@ -54,6 +55,7 @@ const UsuarioService = {
     let permiso = "";
     if (aplicacion === "Nahual") permiso = "permisoNahual";
     if (aplicacion === "Empresas") permiso = "permisoEmpresas";
+    if (aplicacion === "Admin") permiso = "permisoAdmin";
     if (aplicacion === undefined)
       throw new Error("No se especifico una aplicacion de origen");
     const usuarioEncontrado = await UsuarioService.encontrarUsuarioPor(email);
