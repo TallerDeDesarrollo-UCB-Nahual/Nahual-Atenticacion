@@ -56,11 +56,11 @@ const UsuarioService = {
     if (aplicacion === "Empresas") permiso = "permisoEmpresas";
     if (aplicacion === undefined)
       throw new Error("No se especifico una aplicacion de origen");
-    const usuarioEcontrado = await UsuarioService.encontrarUsuarioPor(email);
-    if (usuarioEcontrado) {
+    const usuarioEncontrado = await UsuarioService.encontrarUsuarioPor(email);
+    if (usuarioEncontrado) {
       try {
-        usuarioEcontrado[permiso] = true;
-        const respuesta = await usuarioEcontrado.save();
+        usuarioEncontrado[permiso] = true;
+        const respuesta = await usuarioEncontrado.save();
         return respuesta;
       } catch (error) {
         throw error;
