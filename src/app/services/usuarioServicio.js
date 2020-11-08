@@ -91,11 +91,11 @@ const UsuarioService = {
       default:
         throw new Error("No se encontro la aplicacion: " + aplicacion)
     }
-    const usuarioEcontrado = await UsuarioService.encontrarUsuarioPor(email);
-    if (usuarioEcontrado) {
+    const usuarioEncontrado = await UsuarioService.encontrarUsuarioPor(email);
+    if (usuarioEncontrado) {
       try {
-        usuarioEcontrado[permiso] = false;
-        const respuesta = await usuarioEcontrado.save();
+        usuarioEncontrado[permiso] = false;
+        const respuesta = await usuarioEncontrado.save();
         return respuesta;
       } catch (error) {
         throw error;
