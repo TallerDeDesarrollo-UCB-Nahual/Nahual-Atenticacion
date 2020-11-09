@@ -7,7 +7,6 @@ const verificarAplicacion = (aplicacion)=>{
           return "permisoNahual";
         case "Empresas":
           return "permisoEmpresas";
-          break;
         case "Admin":
           return "permisoAdmin";
         default:
