@@ -60,7 +60,6 @@ const UsuarioServicio = {
   otorgarAcceso: async (nombre, email, aplicacion) => {
     let permiso = verificarAplicacion(aplicacion);
     const usuarioEncontrado = await UsuarioServicio.encontrarUsuarioPor(email);
-    console.log(usuarioEncontrado)
     if (usuarioEncontrado) {
       try {
         usuarioEncontrado[permiso] = true;
@@ -84,18 +83,8 @@ const UsuarioServicio = {
   },
 
   revocarAcceso: async ( email, aplicacion) => {
-    let permiso = "";
-    switch (aplicacion) {
-      case "Nahual":
-        permiso = "permisoNahual"
-        break;
-      case "Empresas":
-        permiso = "permisoEmpresas"
-        break;
-      default:
-        throw new Error("No se encontro la aplicacion: " + aplicacion)
-    }
-    const usuarioEncontrado = await UsuarioService.encontrarUsuarioPor(email);
+    let permiso = verificarAplicacion(aplicacion);
+    const usuarioEncontrado = await UsuarioServicio.encontrarUsuarioPor(email);
     if (usuarioEncontrado) {
       try {
         usuarioEncontrado[permiso] = false;
@@ -107,7 +96,7 @@ const UsuarioServicio = {
     } 
     throw new Error("No se encontró el usuario con email: " + email);
   },
-  
+
   obtenerUsuarios: async() => {
     try {
         return await UsuarioModel.findAll();
