@@ -1,4 +1,3 @@
-const SolicitudModel = require("../models/solicitud");
 const UsuarioModel = require("../models/usuario");
 const verificarAplicacion = (aplicacion)=>{
   switch(aplicacion)
@@ -13,7 +12,8 @@ const verificarAplicacion = (aplicacion)=>{
           throw new Error("Aplicación no correspondiente.");
       }
 }
-const UsuarioService = {
+
+const UsuarioServicio = {
   encontrarUsuarioPor: async email => {
     try {
       const respuesta = await UsuarioModel.findOne({
@@ -30,7 +30,7 @@ const UsuarioService = {
   verificarAcceso: async (nombre, email, aplicacion) => {
     try {
       let acceso = verificarAplicacion(aplicacion);
-      const usuarioEncontrado = await UsuarioService.encontrarUsuarioPor(email);
+      const usuarioEncontrado = await UsuarioServicio.encontrarUsuarioPor(email);
       if (usuarioEncontrado) {
         if (usuarioEncontrado[acceso] === true) {
           try {
@@ -59,8 +59,7 @@ const UsuarioService = {
 
   otorgarAcceso: async (nombre, email, aplicacion) => {
     let permiso = verificarAplicacion(aplicacion);
-    const usuarioEncontrado = await UsuarioService.encontrarUsuarioPor(email);
-    console.log(usuarioEncontrado)
+    const usuarioEncontrado = await UsuarioServicio.encontrarUsuarioPor(email);
     if (usuarioEncontrado) {
       try {
         usuarioEncontrado[permiso] = true;
@@ -84,18 +83,8 @@ const UsuarioService = {
   },
 
   revocarAcceso: async ( email, aplicacion) => {
-    let permiso = "";
-    switch (aplicacion) {
-      case "Nahual":
-        permiso = "permisoNahual"
-        break;
-      case "Empresas":
-        permiso = "permisoEmpresas"
-        break;
-      default:
-        throw new Error("No se encontro la aplicacion: " + aplicacion)
-    }
-    const usuarioEncontrado = await UsuarioService.encontrarUsuarioPor(email);
+    let permiso = verificarAplicacion(aplicacion);
+    const usuarioEncontrado = await UsuarioServicio.encontrarUsuarioPor(email);
     if (usuarioEncontrado) {
       try {
         usuarioEncontrado[permiso] = false;
@@ -106,7 +95,15 @@ const UsuarioService = {
       }
     } 
     throw new Error("No se encontró el usuario con email: " + email);
-  }
+  },
+
+  obtenerUsuarios: async() => {
+    try {
+        return await UsuarioModel.findAll();
+      } catch (error) {
+        throw error;
+      }
+    }
 };
 
-module.exports = UsuarioService;
+module.exports = UsuarioServicio;
