@@ -59,8 +59,9 @@ const UsuarioService = {
 
   otorgarAcceso: async (nombre, email, aplicacion) => {
     let permiso = verificarAplicacion(aplicacion);
-    const usuarioEcontrado = await UsuarioService.encontrarUsuarioPor(email);
-    if (usuarioEcontrado) {
+    const usuarioEncontrado = await UsuarioService.encontrarUsuarioPor(email);
+    console.log(usuarioEncontrado)
+    if (usuarioEncontrado) {
       try {
         usuarioEncontrado[permiso] = true;
         const respuesta = await usuarioEncontrado.save();
