@@ -18,6 +18,10 @@ const DataTypes = require('../../config/sequelize-config').datatype
     permisoNahual:{
         type: DataTypes.BOOLEAN,
         defaultValue: false
+    },
+    permisoAdmin:{
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
     }
   });
 

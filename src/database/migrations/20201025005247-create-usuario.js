@@ -11,14 +11,18 @@ module.exports = {
             primaryKey: true,
             allowNull: false
         },
+        permisoNahual:{
+          type: Sequelize.BOOLEAN,
+          defaultValue: false
+        },
         permisoEmpresas:{
             type: Sequelize.BOOLEAN,
             defaultValue: false
         },
-        permisoNahual:{
-              type: Sequelize.BOOLEAN,
-              defaultValue: false
-        },
+        permisoAdmin:{
+          type: Sequelize.BOOLEAN,
+          defaultValue: false
+        }
     });
   },
   down: async (queryInterface, Sequelize) => {
