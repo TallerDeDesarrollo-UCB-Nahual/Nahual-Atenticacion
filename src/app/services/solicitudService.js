@@ -1,6 +1,8 @@
 
 const SolicitudModel = require('../models/solicitud');
 const UsuarioModel = require('../models/usuario')
+const UsuarioRechazadoService = require("./usuarioRechazadoService")
+
 const SolicitudService = {
 
     findAll: async() => {
@@ -17,12 +19,14 @@ const SolicitudService = {
         } catch (error) {
           throw error;
         }
-      },
+    },
     borrarSolicitud: async(idSolicitud) => {
       try{
         const solicitudABorrar = await SolicitudModel.findOne({where: {id: Number(idSolicitud)}})
 
         if(solicitudABorrar){
+          console.log(solicitudABorrar.nombre, solicitudABorrar.email);
+          UsuarioRechazadoService.crearUsuarioRechazado(solicitudABorrar.nombre, solicitudABorrar.email);
           const solicitudEliminada = SolicitudModel.destroy({
             where:{id:idSolicitud}
           });
