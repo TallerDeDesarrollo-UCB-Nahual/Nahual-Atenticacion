@@ -1,8 +1,9 @@
 const express = require("express");
 const aplicacion = express();
-const puerto = 3001;
+const PORT = process.env.PORT || 5000
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const rutas = require(__dirname + '/Rutas/index');
 //middleware
 aplicacion.use(cors());
 aplicacion.use(bodyParser.json());
@@ -11,12 +12,13 @@ aplicacion.use(express.json());
 aplicacion.use(express.urlencoded());
 
 //Rutas
-aplicacion.use(require("./rutas/index"));
+aplicacion.use('/api', rutas);
 
 aplicacion.get("*", function(peticion, respuesta) {
   respuesta.send("Bienvenido a nahual");
 });
 
-aplicacion.listen(puerto, () => {
-  console.log(`Tu aplicacion esta corriendo en http://localhost:${puerto}`);
+aplicacion.set('port', PORT);
+aplicacion.listen(PORT, () => {
+  console.log(`La API esta corriendo en ${PORT}`);
 });

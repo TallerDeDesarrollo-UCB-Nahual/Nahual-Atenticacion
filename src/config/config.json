@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "ngjihkpx",
-    "password": "m9vXtwZkaD461s5QgE_61vaCQx2ksLHS",
-    "database": "ngjihkpx",
-    "host": "salt.db.elephantsql.com",
+    "username": "vtyxyxhe",
+    "password": "H6BA0U1gsz6m842s0JGVrQUuE_IHA-K8",
+    "database": "vtyxyxhe",
+    "host": "lallah.db.elephantsql.com",
     "dialect": "postgres",
     "define": {
       "schema": "public",
@@ -15,13 +15,21 @@
     "password": null,
     "database": "database_test",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "postgres",
+    "define": {
+      "schema": "public",
+      "timestamps": false
+    }
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "username": "jxdocflyvrrfqo",
+    "password": "64aebdc2498da0659da5994c600474c43b17600d5630109481d2f5ebb60e518a",
+    "database": "df8c8bnmtrodkj",
+    "host": "ec2-54-88-130-244.compute-1.amazonaws.com",
+    "dialect": "postgres",
+    "define": {
+      "schema": "public",
+      "timestamps": false
+    }
   }
 }
