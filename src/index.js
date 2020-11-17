@@ -3,7 +3,7 @@ const aplicacion = express();
 const PORT = process.env.PORT || 5000
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const rutas = require("./Rutas/index");
+const rutas = require(__dirname + '/Rutas/index');
 //middleware
 aplicacion.use(cors());
 aplicacion.use(bodyParser.json());
