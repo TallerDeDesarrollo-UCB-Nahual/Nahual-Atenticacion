@@ -1,12 +1,12 @@
 {
   "development": {
-    "username": "vtyxyxhe",
-    "password": "H6BA0U1gsz6m842s0JGVrQUuE_IHA-K8",
-    "database": "vtyxyxhe",
-    "host": "lallah.db.elephantsql.com",
-    "dialect": "postgres",
+    "username": "root",
+    "password": "root",
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "port":"3306",
+    "dialect": "mysql",
     "define": {
-      "schema": "public",
       "timestamps": false
     }
   },
