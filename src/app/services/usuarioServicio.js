@@ -1,25 +1,24 @@
 const UsuarioModel = require("../models/usuario");
-const verificarAplicacion = (aplicacion)=>{
-  switch(aplicacion)
-      {
-        case "Nahual": 
-          return "permisoNahual";
-        case "Empresas":
-          return "permisoEmpresas";
-        case "Admin":
-          return "permisoAdmin";
-        default:
-          throw new Error("Aplicación no correspondiente.");
-      }
-}
+const verificarAplicacion = (aplicacion) => {
+  switch (aplicacion) {
+    case "Nahual":
+      return "permisoNahual";
+    case "Empresas":
+      return "permisoEmpresas";
+    case "Admin":
+      return "permisoAdmin";
+    default:
+      throw new Error("Aplicación no correspondiente.");
+  }
+};
 
 const UsuarioServicio = {
-  encontrarUsuarioPor: async email => {
+  encontrarUsuarioPor: async (email) => {
     try {
       const respuesta = await UsuarioModel.findOne({
         where: {
-          email: email
-        }
+          email: email,
+        },
       });
       return respuesta;
     } catch (error) {
@@ -30,7 +29,9 @@ const UsuarioServicio = {
   verificarAcceso: async (nombre, email, aplicacion) => {
     try {
       let acceso = verificarAplicacion(aplicacion);
-      const usuarioEncontrado = await UsuarioServicio.encontrarUsuarioPor(email);
+      const usuarioEncontrado = await UsuarioServicio.encontrarUsuarioPor(
+        email
+      );
       if (usuarioEncontrado) {
         if (usuarioEncontrado[acceso] === true) {
           try {
@@ -73,7 +74,7 @@ const UsuarioServicio = {
         const respuesta = await UsuarioModel.create({
           nombre: nombre,
           email: email,
-          [permiso]: true
+          [permiso]: true,
         });
         return respuesta;
       } catch (error) {
@@ -82,7 +83,7 @@ const UsuarioServicio = {
     }
   },
 
-  revocarAcceso: async ( email, aplicacion) => {
+  revocarAcceso: async (email, aplicacion) => {
     let permiso = verificarAplicacion(aplicacion);
     const usuarioEncontrado = await UsuarioServicio.encontrarUsuarioPor(email);
     if (usuarioEncontrado) {
@@ -93,17 +94,17 @@ const UsuarioServicio = {
       } catch (error) {
         throw error;
       }
-    } 
+    }
     throw new Error("No se encontró el usuario con email: " + email);
   },
 
-  obtenerUsuarios: async() => {
+  obtenerUsuarios: async () => {
     try {
-        return await UsuarioModel.findAll();
-      } catch (error) {
-        throw error;
-      }
+      return await UsuarioModel.findAll();
+    } catch (error) {
+      throw error;
     }
+  },
 };
 
 module.exports = UsuarioServicio;
