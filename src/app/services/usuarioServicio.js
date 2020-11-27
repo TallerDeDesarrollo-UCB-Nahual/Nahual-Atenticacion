@@ -2,8 +2,8 @@ const UsuarioModel = require("../models/usuario");
 const verificarAplicacion = (aplicacion)=>{
   switch(aplicacion)
       {
-        case "Nahual": 
-          return "permisoNahual";
+        case "Egresades": 
+          return "permisoEgresades";
         case "Empresas":
           return "permisoEmpresas";
         case "Admin":
