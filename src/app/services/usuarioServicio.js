@@ -1,16 +1,17 @@
 const UsuarioModel = require("../models/usuario");
-const verificarAplicacion = (aplicacion) => {
-  switch (aplicacion) {
-    case "Nahual":
-      return "permisoNahual";
-    case "Empresas":
-      return "permisoEmpresas";
-    case "Admin":
-      return "permisoAdmin";
-    default:
-      throw new Error("Aplicación no correspondiente.");
-  }
-};
+const verificarAplicacion = (aplicacion)=>{
+  switch(aplicacion)
+      {
+        case "Egresades": 
+          return "permisoEgresades";
+        case "Empresas":
+          return "permisoEmpresas";
+        case "Admin":
+          return "permisoAdmin";
+        default:
+          throw new Error("Aplicación no correspondiente.");
+      }
+}
 
 const UsuarioServicio = {
   encontrarUsuarioPor: async (email) => {
