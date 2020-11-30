@@ -15,7 +15,7 @@ const DataTypes = require('../../config/sequelize-config').datatype
       type: DataTypes.BOOLEAN,
       defaultValue: false
     },
-    permisoNahual:{
+    permisoEgresades:{
         type: DataTypes.BOOLEAN,
         defaultValue: false
     },
