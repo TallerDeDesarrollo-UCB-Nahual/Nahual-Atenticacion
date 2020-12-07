@@ -22,6 +22,10 @@ const DataTypes = require('../../config/sequelize-config').datatype
     permisoAdmin:{
       type: DataTypes.BOOLEAN,
       defaultValue: false
+    },
+    permisoCursosPeriodos:{
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
     }
   });
 
