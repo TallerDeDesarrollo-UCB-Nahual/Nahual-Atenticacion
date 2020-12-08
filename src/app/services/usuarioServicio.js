@@ -8,6 +8,8 @@ const verificarAplicacion = (aplicacion)=>{
           return "permisoEmpresas";
         case "Admin":
           return "permisoAdmin";
+        case "Cursos-Periodos":
+          return "permisoCursosPeriodos";
         default:
           throw new Error("Aplicación no correspondiente.");
       }
