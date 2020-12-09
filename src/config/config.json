@@ -22,10 +22,10 @@
     }
   },
   "production": {
-    "username": "jxdocflyvrrfqo",
-    "password": "64aebdc2498da0659da5994c600474c43b17600d5630109481d2f5ebb60e518a",
-    "database": "df8c8bnmtrodkj",
-    "host": "ec2-54-88-130-244.compute-1.amazonaws.com",
+    "username": "tfejhflgptetwt",
+    "password": "e60201bcd8aa7bbb35f7fa056a4d72f2af4dc654deb72018c5c8fa062bd92f33",
+    "database": "ddlr6ub68089mb",
+    "host": "ec2-54-75-150-32.eu-west-1.compute.amazonaws.com",
     "dialect": "postgres",
     "define": {
       "schema": "public",
