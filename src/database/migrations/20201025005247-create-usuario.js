@@ -22,6 +22,10 @@ module.exports = {
         permisoAdmin:{
           type: Sequelize.BOOLEAN,
           defaultValue: false
+        },
+        permisoCursosPeriodos:{
+          type: Sequelize.BOOLEAN,
+          defaultValue: false
         }
     });
   },
