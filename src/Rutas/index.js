@@ -8,6 +8,7 @@ const AplicacionControlador = require("../controladores/aplicacionControlador");
 router.get("/solicitudes", SolicitudControlador.obtenerTodo);
 router.post("/solicitudes", SolicitudControlador.crearSolicitud);
 router.delete("/solicitudes/:id", SolicitudControlador.borrarSolicitud);
+router.delete("/solicitudes/rechazar/:id", SolicitudControlador.rechazarSolicitud);
 router.post("/otorgarAcceso", UsuarioControlador.otorgarAccesoAplicacion);
 router.post("/revocarAcceso", UsuarioControlador.revocarAccesoAplicacion);
 router.post("/verificarAcceso", UsuarioControlador.verificarAcceso);
