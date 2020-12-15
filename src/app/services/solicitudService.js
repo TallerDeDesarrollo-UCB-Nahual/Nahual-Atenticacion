@@ -25,6 +25,23 @@ const SolicitudService = {
       });
 
       if (solicitudABorrar) {
+        const solicitudEliminada = SolicitudModel.destroy({
+          where: { id: idSolicitud },
+        });
+        return solicitudEliminada;
+      }
+      return null;
+    } catch (error) {
+      throw error;
+    }
+  },
+  rechazarSolicitud: async (idSolicitud) => {
+    try {
+      const solicitudABorrar = await SolicitudModel.findOne({
+        where: { id: Number(idSolicitud) },
+      });
+
+      if (solicitudABorrar) {
         console.log(solicitudABorrar.nombre, solicitudABorrar.email);
         UsuarioRechazadoService.crearUsuarioRechazado(
           solicitudABorrar.nombre,

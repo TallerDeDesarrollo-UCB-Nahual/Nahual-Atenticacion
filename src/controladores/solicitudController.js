@@ -51,6 +51,29 @@ const SolicitudController = {
         util.setError(400, error);
         return util.send(res);
       }
+    },
+
+    rechazarSolicitud: async (req, res) => {
+      const { id } = req.params;
+
+      if (!Number(id)) {
+        util.setError(400, 'Por favor proveenos un valor numerico');
+        return util.send(res);
+      }
+  
+      try {
+        const solicitudAEliminar = await SolicitudService.rechazarSolicitud(id);
+  
+        if (solicitudAEliminar) {
+          util.setSuccess(200, 'Solicitud rechazada');
+        } else {
+          util.setError(404, `La solicitud con id ${id} no fue encontrada`);
+        }
+        return util.send(res);
+      } catch (error) {
+        util.setError(400, error);
+        return util.send(res);
+      }
     }
 }
 module.exports =  SolicitudController;
