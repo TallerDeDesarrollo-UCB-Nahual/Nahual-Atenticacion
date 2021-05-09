@@ -12,6 +12,7 @@ router.delete("/solicitudes/rechazar/:id", SolicitudControlador.rechazarSolicitu
 router.post("/otorgarAcceso", UsuarioControlador.otorgarAccesoAplicacion);
 router.post("/revocarAcceso", UsuarioControlador.revocarAccesoAplicacion);
 router.post("/verificarAcceso", UsuarioControlador.verificarAcceso);
+router.post("/verificarAccesoApps", UsuarioControlador.verificarAccesoApps);
 router.get("/usuariosConAcceso", UsuarioControlador.obtenerUsuariosConAcceso);
 router.get("/usuariosRechazados", UsuarioRechazadoControlador.obtenerTodo);
 router.delete("/usuariosRechazados/:id", UsuarioRechazadoControlador.eliminarUsuario);

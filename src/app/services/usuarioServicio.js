@@ -29,6 +29,26 @@ const UsuarioServicio = {
     }
   },
 
+  verificarAccesoApps:async (nombre, email) => {
+    try {
+      const usuarioEncontrado = await UsuarioServicio.encontrarUsuarioPor(
+        email
+      );
+      if (usuarioEncontrado) {
+        return usuarioEncontrado;
+      } else {
+        try {
+          return false;
+        } catch (error) {
+          throw error;
+        }
+      }
+    } catch (error) {
+      throw error;
+    }
+  },
+
+
   verificarAcceso: async (nombre, email, aplicacion) => {
     try {
       let acceso = verificarAplicacion(aplicacion);
