@@ -3,6 +3,20 @@ const UsuarioServicio = require("../app/services/usuarioServicio");
 const util = require("../utils/utils");
 
 const UsuarioControlador = {
+  verificarAccesoApps: async (solicitud, respuesta) => {
+    try {
+      const respuestaServicio = await UsuarioServicio.verificarAccesoApps(
+        solicitud.body.nombre,
+        solicitud.body.email
+      );
+      util.setSuccess(200, "Usuario", respuestaServicio);
+      return util.send(respuesta);
+    } catch (error) {
+      util.setError(400, error);
+      return util.send(respuesta);
+    }
+  },
+
   verificarAcceso: async (solicitud, respuesta) => {
     try {
       const respuestaServicio = await UsuarioServicio.verificarAcceso(
